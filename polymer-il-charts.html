@@ -13,7 +13,7 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://inspirationlabs.github.io/il-
 -->
-<polymer-element name='polymer-il-charts-donut' attributes='data width height cwidth innermargin datamargin'>
+<polymer-element name='polymer-il-charts-donut' attributes='data cwidth innermargin datamargin'>
 
   <template>
 
@@ -32,27 +32,47 @@ Element providing solution to no problem in particular.
        *
        * @attribute author
        * @type string
-       * @default 'Dimitri Glazkov'
+       * @default 'Dominic Böttger'
        */
       author: 'Dominic Böttger',
-
+      /**
+       * The `data` attribute sets the data for the chart
+       *
+       * @attribute data
+       * @type Object
+       * @default null
+       */
       data: null,
-      // width and height of the complete container
-      height: 300,
-      width: 300,
-      // width of the donut
+      /**
+       * The `cwidth` attribute sets the width for the arc
+       *
+       * @attribute cwidth
+       * @type integer
+       * @default 30
+       */
       cwidth: 30,
-      // margin in the middle of the donut
+      /**
+       * The `innermargin` attribute sets the inner pie diameter
+       *
+       * @attribute innermargin
+       * @type integer
+       * @default 30
+       */
       innermargin: 30,
-      // margin between the data
-      datamargin: 2,
+      /**
+       * The `datamargin` attribute sets margin between the arcs
+       *
+       * @attribute datamargin
+       * @type integer
+       * @default 2
+       */
+       datamargin: 2,
 
       ready: function() {
         // Ready is a lifecycle callback.
         // You can do setup work in here.
         // More info: http://www.polymer-project.org/docs/polymer/polymer.html#
       },
-
       dataChanged: function() {
         this.renderChart();
       },
