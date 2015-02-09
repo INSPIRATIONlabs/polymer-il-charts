@@ -3,7 +3,7 @@ il-polymer-charts
 
 This is a very flexible and customizable polymer charts library.
 
-View [Demo](https://inspirationlabs.github.io/polymer-il-charts/components/polymer-il-charts/)
+View [Component page](https://inspirationlabs.github.io/polymer-il-charts/components/polymer-il-charts/)
 
 Currently supported chart types:
 
