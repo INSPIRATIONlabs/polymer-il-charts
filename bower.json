@@ -1,5 +1,5 @@
 {
-  "name": "il-polymer-charts",
+  "name": "polymer-il-charts",
   "version": "0.0.1",
   "authors": [
     "Dominic Böttger <dominic.boettger@inspirationlabs.com>"
@@ -12,9 +12,9 @@
     "d3",
     "charts"
   ],
-  "main": "il-polymer-charts.html",
+  "main": "polymer-il-charts.html",
   "license": "MIT",
-  "homepage": "https://github.com/INSPIRATIONlabs/il-polymer-charts/",
+  "homepage": "https://github.com/INSPIRATIONlabs/polymer-il-charts/",
   "ignore": [
     "/.*",
     "/tests/"
