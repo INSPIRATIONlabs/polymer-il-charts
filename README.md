@@ -1,4 +1,4 @@
-il-polymer-charts
+polymer-il-charts
 =================
 
 This is a very flexible and customizable polymer charts library.
