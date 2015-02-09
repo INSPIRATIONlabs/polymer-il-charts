@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>il-polymer-charts demo</title>
+
+  <script src="../webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="il-polymer-charts.html">
+
+</head>
+<body>
+
+  <template id="auto-bind-date" is="auto-binding">
+    <il-polymer-chart-donut data="{{data}}" width="{{width}}" height="{{height}}" cwidth="100" innermargin="100" datamargin="10">
+    </il-polymer-chart-donut>
+  </template>
+    <script>
+      var t = document.querySelector('#auto-bind-date');
+      var color = [
+        '#00BCD4',
+        '#26C6DA',
+        '#4DD0E1',
+        '#80DEEA',
+        '#B2EBF2'
+      ];
+      t.width = 800;
+      t.height = 800;
+      t.data = {
+         name: 'mytest',
+         data: {
+           test1: {
+             values: [
+               {value: 20},
+               {value: 20, color: color[1] },
+               {value: 30, color: color[2], tooltip: '<strong>test</strong>' },
+               {value: 50, color: 'rgba(0,0,0,0)', tooltipdis: true},
+               {value: 30, color: color[2] },
+             ]
+           },
+           test2: {
+             values: [
+               {value: 40, color: color[4]},
+               {value: 40, color: color[3]},
+               {value: 40, color: color[2]}
+             ]
+           },
+           rund3: {
+             values: [
+               {value: 40, color: color[4]},
+               {value: 40, color: color[3]},
+               {value: 40, color: color[2]}
+             ]
+           }
+         }
+       };
+  </script>
+</body>
+</html>
