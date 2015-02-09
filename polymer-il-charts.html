@@ -3,57 +3,15 @@
 <script src="d3-tip.js"></script>
 
 <!--
-Element providing solution to no problem in particular.
+Donut chart element
 
 ##### Example
-  <template id="auto-bind-data" is="auto-binding">
     <polymer-il-charts-donut data="{{data}}" width="{{width}}" height="{{height}}" cwidth="100" innermargin="100" datamargin="10">
     </polymer-il-charts-donut>
-  </template>
-    <script>
-      var t = document.querySelector('#auto-bind-data');
-      var color = [
-        '#00BCD4',
-        '#26C6DA',
-        '#4DD0E1',
-        '#80DEEA',
-        '#B2EBF2'
-      ];
-      t.width = 800;
-      t.height = 800;
-      t.data = {
-         name: 'mytest',
-         data: {
-           test1: {
-             values: [
-               {value: 20},
-               {value: 20, color: color[1] },
-               {value: 30, color: color[2], tooltip: '<strong>test</strong>' },
-               {value: 50, color: 'rgba(0,0,0,0)', tooltipdis: true},
-               {value: 30, color: color[2] },
-             ]
-           },
-           test2: {
-             values: [
-               {value: 40, color: color[4]},
-               {value: 40, color: color[3]},
-               {value: 40, color: color[2]}
-             ]
-           },
-           rund3: {
-             values: [
-               {value: 40, color: color[4]},
-               {value: 40, color: color[3]},
-               {value: 40, color: color[2]}
-             ]
-           }
-         }
-       };
-  </script>
 
 @element polymer-il-chart-donut
 @status alpha
-@homepage http://inspirationlabs.github.io/il-
+@homepage https://inspirationlabs.github.io/polymer-il-charts/components/polymer-il-charts/
 -->
 <polymer-element name='polymer-il-charts-donut' attributes='data cwidth innermargin datamargin'>
 
