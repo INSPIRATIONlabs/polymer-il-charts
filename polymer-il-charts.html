@@ -27,7 +27,7 @@ Donut chart element
 @status alpha
 @homepage https://github.com/INSPIRATIONlabs/polymer-il-charts/
 -->
-<polymer-element name='polymer-il-charts-donut' attributes='data cwidth innermargin datamargin' extends="polymer-il-charts-basic">
+<polymer-element name='polymer-il-charts-donut' attributes='chartdata cwidth innermargin datamargin' extends="polymer-il-charts-basic">
   <script>
   'use strict';
     Polymer({
@@ -40,13 +40,13 @@ Donut chart element
        */
       author: 'Dominic Böttger',
       /**
-       * The `data` attribute sets the data for the chart
+       * The `chartdata` attribute sets the data for the chart
        *
-       * @attribute data
+       * @attribute chartdata
        * @type Object
        * @default null
        */
-      data: null,
+      chartdata: null,
       /**
        * The `cwidth` attribute sets the width for the arc
        *
@@ -77,17 +77,17 @@ Donut chart element
         // You can do setup work in here.
         // More info: http://www.polymer-project.org/docs/polymer/polymer.html#
       },
-      dataChanged: function() {
+      chartdataChanged: function() {
         this.renderChart();
       },
       renderChart: function() {
         var self = this;
 
-        this.datalength = Object.keys(this.data.data).length;
+        this.datalength = Object.keys(this.chartdata.data).length;
         this.radius = this.innermargin + ((this.datalength-1) * this.datamargin) + (this.datalength * this.cwidth);
         this.diameter = this.radius * 2;
 
-        var inputData = this.data;
+        var inputData = this.chartdata;
 
         var dataset = new Map();
 
@@ -216,10 +216,10 @@ Donut chart element
 Donut chart element
 
 ##### Example
-    <polymer-il-charts-donut data="{{data}}" width="{{width}}" height="{{height}}" cwidth="100" innermargin="100" datamargin="10">
-    </polymer-il-charts-donut>
+    <polymer-il-charts-line data="{{data}}">
+    </polymer-il-charts-line>
 
-@element polymer-il-chart-donut
+@element polymer-il-chart-line
 @status alpha
 @homepage https://github.com/INSPIRATIONlabs/polymer-il-charts/
 -->
