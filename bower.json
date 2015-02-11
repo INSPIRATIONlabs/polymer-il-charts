@@ -10,6 +10,7 @@
     "web-components",
     "polymer",
     "d3",
+    "c3",
     "charts"
   ],
   "main": "polymer-il-charts.html",
@@ -21,7 +22,8 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^0.5.2",
-    "d3-elements": "https://github.com/PolymerLabs/d3-elements.git"
+    "d3-elements": "https://github.com/PolymerLabs/d3-elements.git",
+    "c3": "~0.4.9"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^2.0.5"

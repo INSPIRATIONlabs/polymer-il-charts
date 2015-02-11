@@ -9,10 +9,12 @@
 
 </head>
 <body>
-
   <template id="auto-bind-data" is="auto-binding">
+    <polymer-il-charts-line chartdata="{{data}}" grid="">
+    </polymer-il-charts-line>
     <polymer-il-charts-donut data="{{data}}" width="{{width}}" height="{{height}}" cwidth="100" innermargin="100" datamargin="10">
     </polymer-il-charts-donut>
+
   </template>
     <script>
       var t = document.querySelector('#auto-bind-data');
@@ -27,28 +29,42 @@
       t.height = 800;
       t.data = {
          name: 'mytest',
+         // values for the x axis
+         xaxis: {
+           values: [10,20,30,40,50]
+         },
          data: {
            test1: {
+             color:'#FF9800',
+             type: 'area',
              values: [
-               {value: 20},
-               {value: 20, color: color[1] },
-               {value: 30, color: color[2], tooltip: '<strong>test</strong>' },
-               {value: 50, color: 'rgba(0,0,0,0)', tooltipdis: true},
-               {value: 30, color: color[2] },
+               {value: 4.3},
+               {value: 4.75, color: color[1] },
+               {value: 2.75, color: color[2], tooltip: '<strong>test</strong>' },
+               {value: null, color: 'rgba(0,0,0,0)', tooltipdis: true},
+               {value: 4.25, color: color[2] }
              ]
            },
            test2: {
+             color: '#FFC107',
+             type: 'line',
              values: [
-               {value: 40, color: color[4]},
-               {value: 40, color: color[3]},
-               {value: 40, color: color[2]}
+               {value: 2.35, color: color[4]},
+               {value: 4.75, color: color[3]},
+               {value: 4.86, color: color[2]},
+               {value: 4.86, color: color[2]},
+               {value: 2.35, color: color[4]}
              ]
            },
-           rund3: {
+           test3: {
+             color: '#FF5722',
+             type: 'area-spline',
              values: [
-               {value: 40, color: color[4]},
-               {value: 40, color: color[3]},
-               {value: 40, color: color[2]}
+               {value: 2.3, color: color[4]},
+               {value: 2.3, color: color[3]},
+               {value: 4.5, color: color[2]},
+               {value: 2.3, color: color[3]},
+               {value: 4.5, color: color[2]}
              ]
            }
          }

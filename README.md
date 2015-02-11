@@ -8,6 +8,14 @@ View [Component page](https://inspirationlabs.github.io/polymer-il-charts/compon
 Currently supported chart types:
 
 - Donut
+- line charts
+- multi line charts
+- area charts
+- stacked area charts
+- spline charts
+- spline area charts
+- spline stacked area charts
+- mixed area, line, spline, spline-area charts
 
 ## Example
 
@@ -35,25 +43,27 @@ Every color and every tooltip is configurable.
        data: {
          test1: {
            values: [
-             {value: 20},
-             {value: 20, color: color[1] },
-             {value: 30, color: color[2], tooltip: '<strong>test</strong>' },
-             {value: 50, color: 'rgba(0,0,0,0)', tooltipdis: true},
-             {value: 30, color: color[2] },
+             {value: 4.3},
+             {value: 4.75, color: color[1] },
+             {value: 2.75, color: color[2], tooltip: '<strong>test</strong>' },
+             {value: 5, color: 'rgba(0,0,0,0)', tooltipdis: true},
+             {value: 4.25, color: color[2] },
            ]
          },
          test2: {
            values: [
-             {value: 40, color: color[4]},
-             {value: 40, color: color[3]},
-             {value: 40, color: color[2]}
+             {value: 2.35, color: color[4]},
+             {value: 4.75, color: color[3]},
+             {value: 4.86, color: color[2]},
+             {value: 4.86, color: color[2]}
            ]
          },
          rund3: {
            values: [
-             {value: 40, color: color[4]},
-             {value: 40, color: color[3]},
-             {value: 40, color: color[2]}
+             {value: 2.3, color: color[4]},
+             {value: 2.3, color: color[3]},
+             {value: 4.5, color: color[2]},
+             {value: 2.3, color: color[3]},
            ]
          }
        }

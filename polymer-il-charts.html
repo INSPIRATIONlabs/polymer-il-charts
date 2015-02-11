@@ -1,7 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="polymer-il-charts-import.html">
 <script src="d3-tip.js"></script>
+<script src="../c3/c3.min.js"></script>
 
+<polymer-element name='polymer-il-charts-basic'>
+  <template>
+    <link rel='stylesheet' href='polymer-il-charts.css'>
+    <link rel='stylesheet' href='../c3/c3.min.css'>
+    <div id="chart"></div>
+    <div id="charttip"></div>
+    <content></content>
+    <shadow></shadow>
+  </template>
+  <script>
+    Polymer('polymer-il-charts-basic');
+  </script>
+</polymer>
 <!--
 Donut chart element
 
@@ -13,17 +27,7 @@ Donut chart element
 @status alpha
 @homepage https://github.com/INSPIRATIONlabs/polymer-il-charts/
 -->
-<polymer-element name='polymer-il-charts-donut' attributes='data cwidth innermargin datamargin'>
-
-  <template>
-
-    <link rel='stylesheet' href='polymer-il-charts.css'>
-    <div id="chart"></div>
-    <div id="charttip"></div>
-    <content></content>
-
-  </template>
-
+<polymer-element name='polymer-il-charts-donut' attributes='data cwidth innermargin datamargin' extends="polymer-il-charts-basic">
   <script>
   'use strict';
     Polymer({
@@ -201,6 +205,124 @@ Donut chart element
               }
             });
 
+      }
+    });
+
+  </script>
+
+</polymer-element>
+
+<!--
+Donut chart element
+
+##### Example
+    <polymer-il-charts-donut data="{{data}}" width="{{width}}" height="{{height}}" cwidth="100" innermargin="100" datamargin="10">
+    </polymer-il-charts-donut>
+
+@element polymer-il-chart-donut
+@status alpha
+@homepage https://github.com/INSPIRATIONlabs/polymer-il-charts/
+-->
+<polymer-element name='polymer-il-charts-line' extends="polymer-il-charts-basic" attributes='chartdata grid gridx gridy' >
+  <script>
+  'use strict';
+    Polymer({
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Dominic Böttger'
+       */
+      author: 'Dominic Böttger',
+      /**
+       * The `data` attribute sets the data for the chart
+       *
+       * @attribute data
+       * @type Object
+       * @default null
+       */
+      chartdata: null,
+
+      ready: function() {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html
+      },
+      chartdataChanged: function() {
+        this.renderChart();
+      },
+      renderChart: function() {
+
+        var self = this;
+        var inputData = self.chartdata;
+
+        var chartkeys = Object.keys(inputData.data);
+
+        var types = {};
+        var colors = {};
+
+        // es6 function
+        var dataset = new Map();
+        for (var key in inputData.data) {
+          var dataarray = [];
+          for(var valobj of inputData.data[key].values) {
+            dataarray.push(valobj.value);
+          }
+          if(inputData.data[key].type) {
+            types[key] = inputData.data[key].type;
+          }
+          if(inputData.data[key].color) {
+            colors[key] = inputData.data[key].color;
+          }
+          dataset.set(key, dataarray);
+        }
+
+        var columns = [];
+
+        for(var key of chartkeys) {
+          var column = [];
+          column.push(key);
+          for(var val of dataset.get(key)) {
+            column.push(val);
+          }
+          columns.push(column);
+        }
+
+        var chartconfig = {
+            bindto: this.$.chart,
+            data: {
+                columns: columns,
+                types: types,
+                colors: colors
+            }
+        };
+
+        if(inputData.xaxis && inputData.xaxis.values) {
+          if(inputData.xaxis.values instanceof Array) {
+            inputData.xaxis.values.unshift('x');
+            columns.push(inputData.xaxis.values);
+            chartconfig.data.x = 'x';
+          }
+        }
+
+        if(self.gridx || self.grid) {
+          chartconfig.grid = {};
+          chartconfig.grid.x = {};
+          chartconfig.grid.x.show = true;
+        }
+
+        if(self.gridy || self.grid) {
+          if(!chartconfig.grid) {
+            chartconfig.grid = {};
+          }
+          chartconfig.grid.y = {};
+          chartconfig.grid.y.show = true;
+        }
+
+        this.chart = c3.generate(chartconfig);
+        // this is a workaround
+        setTimeout(function () { self.chart.load({columns: columns}); }, 100);
       }
     });
 
